@@ -16,7 +16,6 @@
       addTodo() {
         this.todos.push({id:id++, text: this.newTodo, done: false})
         this.newTodo = ''
-        console.log(this.todos);
       }
     }
   }
@@ -30,5 +29,12 @@
       <input v-model="newTodo">
       <button>Dodaj</button>
     </form>
+    <ul>
+    <li v-for="todo in todos" :key="todo.id">
+      <input type="checkbox" v-model="todo.done">
+      <span :class="{ done: todo.done }">{{ todo.text }}</span>
+      
+    </li>
+  </ul>
   </main>
 </template>
