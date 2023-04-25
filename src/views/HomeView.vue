@@ -1,6 +1,5 @@
 <script>
   let id = 0;
-
   export default {
     data() {
       return {
@@ -10,7 +9,11 @@
       }
     },
     computed : {
-      //...
+      filteredTodos() {
+        return this.hideCompleted
+          ? this.todos.filter((t) => !t.done)
+          : this.todos
+      }
     },
     methods: {
       addTodo() {
@@ -35,25 +38,28 @@
           if (a.text > b.text) return 1;
           return 0;
         })
+      },
+      showTodo() {
+        this.hideCompleted = !this.hideCompleted
       }
     }
   }
-
 </script>
-
 <template>
-  <h1>Lista zadań</h1>
+  <h1>Todo List</h1>
   <main>
     <form @submit.prevent="addTodo">
       <input v-model="newTodo">
-      <button>Dodaj</button>
+      <button>Add</button>
     </form>
       <span>Todo counter {{ this.todos.filter(produkt => produkt.done === false).length }}</span>
       <br>
       <button v-if="todos.length !== 0" @click="sortList()">Sort</button>
+      <br>
+      <span v-if="todos.length !== 0">Show todo only:</span>
+      <input v-if="todos.length !== 0" type="checkbox" @click="showTodo()">
     <ul>
-    <template v-for="todo in todos" :key="todo.id">
-      <li>
+      <li v-for="todo in filteredTodos" :key="todo.id">
         <input type="checkbox" v-model="todo.done">
         <span :class="{ done: todo.done }" v-show="!todo.edit">{{ todo.text }}</span>
         <input type="text" v-model="todo.text" v-show="todo.edit">
@@ -61,8 +67,6 @@
         <button v-show="!todo.edit" @click="editTodo(todo)">Edit</button>
         <button v-show="todo.edit" @click="changeTodo(todo, todo.text)">Save</button>
       </li>
-    </template>
-    
-  </ul>
+    </ul>
   </main>
 </template>
