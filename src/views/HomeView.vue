@@ -14,7 +14,7 @@
     },
     methods: {
       addTodo() {
-        this.todos.push({id:id++, text: this.newTodo, done: false, edit: false})
+        this.todos.push({id:id++, text: this.newTodo.toUpperCase(), done: false, edit: false})
         this.newTodo = ''
       },
       removeTodo(todo) {
