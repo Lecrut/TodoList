@@ -28,6 +28,13 @@
         todo.text = value
         todo.edit = false
         this.value = ''
+      },
+      sortList( ) {
+        return this.todos.sort((a, b) => {
+          if (a.text < b.text) return -1;
+          if (a.text > b.text) return 1;
+          return 0;
+        })
       }
     }
   }
@@ -41,6 +48,7 @@
       <input v-model="newTodo">
       <button>Dodaj</button>
     </form>
+      <button v-if="todos.length !== 0" @click="sortList()">Sort</button>
     <ul>
     <li v-for="todo in todos" :key="todo.id">
       <input type="checkbox" v-model="todo.done">
