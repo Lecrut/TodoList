@@ -38,7 +38,7 @@
       }
     }
   }
-  
+
 </script>
 
 <template>
@@ -48,16 +48,21 @@
       <input v-model="newTodo">
       <button>Dodaj</button>
     </form>
+      <span>Todo counter {{ this.todos.filter(produkt => produkt.done === false).length }}</span>
+      <br>
       <button v-if="todos.length !== 0" @click="sortList()">Sort</button>
     <ul>
-    <li v-for="todo in todos" :key="todo.id">
-      <input type="checkbox" v-model="todo.done">
-      <span :class="{ done: todo.done }" v-show="!todo.edit">{{ todo.text }}</span>
-      <input type="text" v-model="todo.text" v-show="todo.edit">
-      <button @click="removeTodo(todo)">X</button>
-      <button v-show="!todo.edit" @click="editTodo(todo)">Edit</button>
-      <button v-show="todo.edit" @click="changeTodo(todo, todo.text)">Save</button>
-    </li>
+    <template v-for="todo in todos" :key="todo.id">
+      <li>
+        <input type="checkbox" v-model="todo.done">
+        <span :class="{ done: todo.done }" v-show="!todo.edit">{{ todo.text }}</span>
+        <input type="text" v-model="todo.text" v-show="todo.edit">
+        <button @click="removeTodo(todo)">X</button>
+        <button v-show="!todo.edit" @click="editTodo(todo)">Edit</button>
+        <button v-show="todo.edit" @click="changeTodo(todo, todo.text)">Save</button>
+      </li>
+    </template>
+    
   </ul>
   </main>
 </template>
