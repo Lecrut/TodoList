@@ -1,11 +1,13 @@
 <script>
   let id = 0;
+  let newName = "";
   export default {
     data() {
       return {
-        newTodo: "",
-        hideCompleted: false,
-        todos: []
+        newTodo: ref(""),
+        hideCompleted: ref(false),
+        smthEdited: ref(false),
+        todos: ref([])
       }
     },
     computed : {
@@ -25,12 +27,18 @@
       },
       editTodo(todo) {
         todo.edit = true
+        this.smthEdited = true
         this.value = todo.text
+
       },
       changeTodo(todo, value) {
         todo.text = value
         todo.edit = false
+        this.smthEdited = false;
         this.value = ''
+      },
+      makeMade(todo) {
+        todo.done = !todo.done
       },
       sortList( ) {
         return this.todos.sort((a, b) => {
@@ -45,6 +53,11 @@
     }
   }
 </script>
+
+<script setup>
+    import { ref } from 'vue';
+    import TodoItem from './TodoItem.vue'
+</script>
 <template>
   <h1>Todo List</h1>
   <main>
@@ -58,14 +71,20 @@
       <br>
       <span v-if="todos.length !== 0">Show todo only:</span>
       <input v-if="todos.length !== 0" type="checkbox" @click="showTodo()">
+      <br>
+      <input v-if="smthEdited" v-model="newName" type="text"/>
     <ul>
       <li v-for="todo in filteredTodos" :key="todo.id">
-        <input type="checkbox" v-model="todo.done">
-        <span v-show="!todo.edit">{{ todo.text }}</span>
-        <input type="text" v-model="todo.text" v-show="todo.edit">
-        <button @click="removeTodo(todo)">X</button>
-        <button v-show="!todo.edit" @click="editTodo(todo)">Edit</button>
-        <button v-show="todo.edit" @click="changeTodo(todo, todo.text)">Save</button>
+        <TodoItem
+            :id = "todo.id"
+            :text = "todo.text"
+            :done = "todo.done"
+            :edit= "todo.edit"
+            @deleteTask="removeTodo(todo)"
+            @editTask="changeTodo(todo, newName)"
+            @ableEdit="editTodo(todo)"
+            @checkCheckbox="makeMade(todo)"
+        ></TodoItem>
       </li>
     </ul>
   </main>
