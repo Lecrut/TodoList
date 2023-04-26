@@ -26,10 +26,12 @@
         this.todos = this.todos.filter((t)=> t !==todo)
       },
       editTodo(todo) {
-        todo.edit = true
-        this.smthEdited = true
-        this.value = todo.text
-
+        if (this.smthEdited=== false) {
+          todo.edit = true
+          this.smthEdited = true
+          this.value = todo.text
+          newName = todo.text;
+        }
       },
       changeTodo(todo, value) {
         todo.text = value
