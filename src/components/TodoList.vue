@@ -1,65 +1,59 @@
-<script>
+<script setup>
   let id = 0;
-  let newName = "";
-  export default {
-    data() {
-      return {
-        newTodo: ref(""),
-        hideCompleted: ref(false),
-        smthEdited: ref(false),
-        todos: ref([])
-      }
-    },
-    computed : {
-      filteredTodos() {
-        return this.hideCompleted
-          ? this.todos.filter((t) => !t.done)
-          : this.todos
-      }
-    },
-    methods: {
-      addTodo() {
-        this.todos.push({id:id++, text: this.newTodo.toUpperCase(), done: false, edit: false})
-        this.newTodo = ''
-      },
-      removeTodo(todo) {
-        this.todos = this.todos.filter((t)=> t !==todo)
-      },
-      editTodo(todo) {
-        if (this.smthEdited=== false) {
-          todo.edit = true
-          this.smthEdited = true
-          this.value = todo.text
-          newName = todo.text;
-        }
-      },
-      changeTodo(todo, value) {
-        todo.text = value
-        todo.edit = false
-        this.smthEdited = false;
-        this.value = ''
-      },
-      makeMade(todo) {
-        todo.done = !todo.done
-      },
-      sortList( ) {
-        return this.todos.sort((a, b) => {
-          if (a.text < b.text) return -1;
-          if (a.text > b.text) return 1;
-          return 0;
-        })
-      },
-      showTodo() {
-        this.hideCompleted = !this.hideCompleted
-      }
+  import { computed, ref } from 'vue'
+  import TodoItem from './TodoItem.vue'
+  let newName = ""
+  let newTodo = ref("")
+  let hideCompleted = ref(false)
+  let smthEdited= ref(false)
+  let todos = ref([])
+  const filteredTodos = computed (() => {
+    return hideCompleted.value
+          ? todos.value.filter((t) => !t.done)
+          : todos.value
+  })
+  function addTodo() {
+    todos.value.push({id:id++, text: newTodo.value.toUpperCase(), done: false, edit: false})
+    newTodo.value = ''
+  }
+
+  function editTodo(todo) {
+    if (smthEdited.value=== false) {
+      todo.edit = true
+      smthEdited.value = true
+      newName = todo.text
     }
+  }
+  function removeTodo(todo) {
+    if ( todo.edit === true) {
+      smthEdited.value = false
+    }
+    todos.value = todos.value.filter((t)=> t !==todo)
+  }
+
+  function changeTodo(todo, value) {
+    todo.text = value
+    todo.edit = false
+    smthEdited.value = false;
+  }
+
+  function makeMade(todo) {
+    todo.done = !todo.done
+  }
+
+  function sortList( ) {
+    return todos.value.sort((a, b) => {
+      if (a.text < b.text) return -1;
+      if (a.text > b.text) return 1;
+      return 0;
+    })
+  }
+
+  function showTodo() {
+    hideCompleted.value = !hideCompleted.value
   }
 </script>
 
-<script setup>
-    import { ref } from 'vue';
-    import TodoItem from './TodoItem.vue'
-</script>
 <template>
   <h1>Todo List</h1>
   <main>
@@ -67,7 +61,7 @@
       <input v-model="newTodo">
       <button>Add</button>
     </form>
-      <span>Todo counter {{ this.todos.filter(produkt => produkt.done === false).length }}</span>
+      <span>Todo counter {{ todos.filter(produkt => produkt.done === false).length }}</span>
       <br>
       <button v-if="todos.length !== 0" @click="sortList()">Sort</button>
       <br>

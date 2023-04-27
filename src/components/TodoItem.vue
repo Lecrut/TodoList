@@ -1,9 +1,21 @@
 <script setup>
     defineProps({
-        id: Number,
-        text: String,
-        done: Boolean,
-        edit: Boolean
+        id: {
+            type :Number,
+            default: 0
+        },
+        text: {
+            type: String,
+            default: ""
+        },
+        done: {
+            type: Boolean,
+            default: false
+        }, 
+        edit:{
+            type: Boolean,
+            default: false
+        } 
     })
     const emit = defineEmits(['deleteTask', 'ableEdit', 'editTask', 'checkCheckbox'])
 </script>
