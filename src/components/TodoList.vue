@@ -1,57 +1,17 @@
 <script setup>
-  let id = 0;
-  import { computed, ref } from 'vue'
   import TodoItem from './TodoItem.vue'
-  let newName = ""
-  let newTodo = ref("")
-  let hideCompleted = ref(false)
-  let smthEdited= ref(false)
-  let todos = ref([])
-  const filteredTodos = computed (() => {
-    return hideCompleted.value
-          ? todos.value.filter((t) => !t.done)
-          : todos.value
-  })
-  function addTodo() {
-    todos.value.push({id:id++, text: newTodo.value.toUpperCase(), done: false, edit: false})
-    newTodo.value = ''
-  }
+  import {useCounterStore} from '../stores/counter.js'
+  import { storeToRefs } from 'pinia';
+  import { computed } from 'vue'
 
-  function editTodo(todo) {
-    if (smthEdited.value=== false) {
-      todo.edit = true
-      smthEdited.value = true
-      newName = todo.text
-    }
-  }
-  function removeTodo(todo) {
-    if ( todo.edit === true) {
-      smthEdited.value = false
-    }
-    todos.value = todos.value.filter((t)=> t !==todo)
-  }
+  const store = useCounterStore()
+  
+  const {showTodo, sortList, makeMade, changeTodo, removeTodo, editTodo, addTodo} = store
 
-  function changeTodo(todo, value) {
-    todo.text = value
-    todo.edit = false
-    smthEdited.value = false;
-  }
+  const {todos, smthEdited, newTodo, newName} = storeToRefs(store)
 
-  function makeMade(todo) {
-    todo.done = !todo.done
-  }
+  const filteredTodos = computed(() => store.filteredTodos)
 
-  function sortList( ) {
-    return todos.value.sort((a, b) => {
-      if (a.text < b.text) return -1;
-      if (a.text > b.text) return 1;
-      return 0;
-    })
-  }
-
-  function showTodo() {
-    hideCompleted.value = !hideCompleted.value
-  }
 </script>
 
 <template>
