@@ -15,33 +15,34 @@
 </script>
 <template>
   <v-sheet width="70%">
-    <h1 style="text-align: center;">Todo List</h1>
+    <h1 style="text-align: center;">{{$t('todoListHeader')}}</h1>
   <main>
     <v-sheet width="100%" class="mx-auto">
       <v-form ref="form" @submit.prevent >
         <v-text-field
           v-model="newTodo"
-          label="Task"
+          :label="$t('taskAddText')"
           :rules="store.nameRules"
           required
         ></v-text-field>
-        <v-btn block class="mt-2" @click="addTodo()">Add</v-btn>
-        <v-btn v-if="todos.length !== 0" block class="mt-2" @click="sortList()">Sort</v-btn>
+        <v-btn block class="mt-2" @click="addTodo()">{{$t('addBtn')}}</v-btn>
+        <v-btn v-if="todos.length !== 0" block class="mt-2" @click="sortList()">{{$t('sortBtn')}}</v-btn>
         <v-checkbox 
           v-if="todos.length !== 0" 
           value="hideCompleted"
-          label="Show todo only" 
+          :label="$t('showTodoCheckbox')"
           @click="showTodo()"></v-checkbox>
       </v-form>
     </v-sheet>
-      <span>Todo counter {{ todos.filter(produkt => produkt.done === false).length }}</span>
+      <br>
+      <span>{{$t('todoCntr')}} {{ todos.filter(produkt => produkt.done === false).length }}</span>
       <br>
       <br>
       <v-text-field 
         v-if="smthEdited" 
         v-model="newName" 
         :rules="store.nameRules"
-        label="Edit task"
+        :label="$t('editTaskLabel')"
         type="text"/>
     <v-card
       class="mx-auto"

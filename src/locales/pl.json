@@ -1,0 +1,18 @@
+{
+    "homePage": "Strona główna",
+    "about": "O stronie",
+    "changeLanguageBtn": "Zmień język na angielski",
+    "addBtn": "Dodaj",
+    "todoListHeader" : "Lista zadań",
+    "taskAddText": "Zadanie",
+    "todoCntr" : "Ilość zadań niewykonanych",
+    "editTaskLabel" : "Edytuj zadanie",
+    "sortBtn": "Sortuj",
+    "deleteBtn": "Usuń",
+    "editBtn": "Edytuj",
+    "saveBtn": "Zapisz",
+    "showTodoCheckbox": "Pokaż tylko do wykonania",
+    "aboutPageHeader" : "Strona o nas",
+    "languageLabel" : "Język",
+    "rulesException" : "Tekst musi być dłuższy niż 3 znaki"
+}

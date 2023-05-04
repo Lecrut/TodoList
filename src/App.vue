@@ -15,30 +15,36 @@
         <v-app-bar-nav-icon variant="tonal" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Menu</v-toolbar-title>
         <v-spacer></v-spacer>
-  
       </v-app-bar>
-    
       <v-navigation-drawer 
         v-model="drawer"
         location="left"
         temporary
         color="grey-light">
-
       <v-list>
-        <v-btn block>
-          <RouterLink to="/">Home</RouterLink>
-        </v-btn>
+        <RouterLink to="/">
+          <v-btn block>
+            {{$t('homePage')}}
+          </v-btn>
+        </RouterLink>
       </v-list>
       <v-list>
-        <v-btn block>
-            <RouterLink to="/about">About</RouterLink>
-        </v-btn>
+        <RouterLink to="/about">
+          <v-btn block>
+            {{$t('about')}}
+          </v-btn>
+        </RouterLink>
       </v-list>
+      <v-select 
+          v-model="$i18n.locale"
+          :label="$t('languageLabel')"
+          :items="['pl', 'en']"
+          :value="$i18n.locale"
+          variant="solo">
+      </v-select>
       </v-navigation-drawer>
       <v-main style="min-height: 65px;" ></v-main>
     </v-layout>
 </v-card>
   <RouterView />
 </template>
-
-
