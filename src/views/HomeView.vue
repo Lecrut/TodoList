@@ -1,9 +1,9 @@
-<script setup>
+<script lang="ts" setup>
   import TodoList from '../components/TodoList.vue'
 </script>
 
 <template>
-  <v-container style="margin-left: 250px;">
+  <v-container>
     <main>
       <TodoList></TodoList>
     </main> 

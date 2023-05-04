@@ -26,16 +26,15 @@ const vuetify = createVuetify({
   }
 })
 
-const messages = {
-  pl, 
-  en
-}
 
 const i18n = createI18n({
   locale: 'pl',
-  fallbackLocale: 'en',
-  messages,
+  messages: {
+    pl,
+    en
+  }
 })
+
 
 app.use(createPinia())
 app.use(router)

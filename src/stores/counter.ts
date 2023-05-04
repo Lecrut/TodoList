@@ -3,11 +3,17 @@ import { defineStore } from 'pinia'
 
 export const useCounterStore = defineStore('counter', () => {
   let id = 0;
-  let newName = ref("")
-  let newTodo = ref("")
-  let hideCompleted = ref(false)
-  let smthEdited= ref(false)
-  let todos = ref([])
+  const newName = ref("")
+  const newTodo = ref("")
+  const hideCompleted = ref(false)
+  const smthEdited= ref(false)
+  interface todo {
+    id : number,
+    text: string, 
+    done: boolean, 
+    edit: boolean
+  }
+  const todos = ref<todo[]>([])
 
   const nameRules = [
     newTodo => (newTodo < 1 || newTodo.length > 3) || 'Text must be longer than 3 characters',
