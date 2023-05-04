@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
   import TodoItem from './TodoItem.vue'
   import {useCounterStore} from '../stores/counter'
   import { storeToRefs } from 'pinia';
