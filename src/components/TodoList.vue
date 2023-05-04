@@ -13,35 +13,57 @@
   const filteredTodos = computed(() => store.filteredTodos)
 
 </script>
-
 <template>
-  <h1>Todo List</h1>
+  <v-sheet width="70%">
+    <h1 style="text-align: center;">Todo List</h1>
   <main>
-    <form @submit.prevent="addTodo">
-      <input v-model="newTodo">
-      <button>Add</button>
-    </form>
+    <v-sheet width="100%" class="mx-auto">
+      <v-form ref="form" @submit.prevent >
+        <v-text-field
+          v-model="newTodo"
+          label="Task"
+          :rules="store.nameRules"
+          required
+        ></v-text-field>
+        <v-btn block class="mt-2" @click="addTodo()">Add</v-btn>
+        <v-btn v-if="todos.length !== 0" block class="mt-2" @click="sortList()">Sort</v-btn>
+        <v-checkbox 
+          v-if="todos.length !== 0" 
+          value="hideCompleted"
+          label="Show todo only" 
+          @click="showTodo()"></v-checkbox>
+      </v-form>
+    </v-sheet>
       <span>Todo counter {{ todos.filter(produkt => produkt.done === false).length }}</span>
       <br>
-      <button v-if="todos.length !== 0" @click="sortList()">Sort</button>
       <br>
-      <span v-if="todos.length !== 0">Show todo only:</span>
-      <input v-if="todos.length !== 0" type="checkbox" @click="showTodo()">
-      <br>
-      <input v-if="smthEdited" v-model="newName" type="text"/>
+      <v-text-field 
+        v-if="smthEdited" 
+        v-model="newName" 
+        :rules="store.nameRules"
+        label="Edit task"
+        type="text"/>
+    <v-card
+      class="mx-auto"
+      width="100%"
+    >
+    </v-card>
     <ul>
-      <li v-for="todo in filteredTodos" :key="todo.id">
-        <TodoItem
-            :id = "todo.id"
-            :text = "todo.text"
-            :done = "todo.done"
-            :edit= "todo.edit"
-            @deleteTask="removeTodo(todo)"
-            @editTask="changeTodo(todo, newName)"
-            @ableEdit="editTodo(todo)"
-            @checkCheckbox="makeMade(todo)"
-        ></TodoItem>
-      </li>
+      <v-list>
+        <v-list-item v-for="todo in filteredTodos" :key="todo.id">
+          <TodoItem
+              :id = "todo.id"
+              :text = "todo.text"
+              :done = "todo.done"
+              :edit= "todo.edit"
+              @delete-task="removeTodo(todo)"
+              @edit-task="changeTodo(todo, newName)"
+              @able-edit="editTodo(todo)"
+              @check-checkbox="makeMade(todo)"
+          ></TodoItem>
+        </v-list-item>
+      </v-list>
     </ul>
   </main>
+  </v-sheet>
 </template>

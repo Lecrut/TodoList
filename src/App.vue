@@ -1,19 +1,44 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+  import { RouterLink, RouterView } from 'vue-router'
+  import { ref } from "vue"
+  const drawer = ref(false)
+
 </script>
 
 <template>
-  <header>
+  <v-card>
+    <v-layout>
+      <v-app-bar
+        color="grey"
+        prominent
+      >
+        <v-app-bar-nav-icon variant="tonal" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-toolbar-title>Menu</v-toolbar-title>
+        <v-spacer></v-spacer>
+  
+      </v-app-bar>
+    
+      <v-navigation-drawer 
+        v-model="drawer"
+        location="left"
+        temporary
+        color="grey-light">
 
-    <div class="wrapper">
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
+      <v-list>
+        <v-btn block>
+          <RouterLink to="/">Home</RouterLink>
+        </v-btn>
+      </v-list>
+      <v-list>
+        <v-btn block>
+            <RouterLink to="/about">About</RouterLink>
+        </v-btn>
+      </v-list>
+      </v-navigation-drawer>
+      <v-main style="min-height: 65px;" ></v-main>
+    </v-layout>
+</v-card>
   <RouterView />
 </template>
+
 

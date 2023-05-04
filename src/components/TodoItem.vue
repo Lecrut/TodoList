@@ -17,12 +17,14 @@
             default: false
         } 
     })
-    const emit = defineEmits(['deleteTask', 'ableEdit', 'editTask', 'checkCheckbox'])
+    const emit = defineEmits(['delete-task', 'able-edit', 'edit-task', 'check-checkbox'])
 </script>
 <template>
-    <input type="checkbox"  @click="emit('checkCheckbox')" :checked="done">
-    <span>{{ text }}</span>
-    <button @click="emit('deleteTask')">X</button>
-    <button v-show="!edit" @click="emit('ableEdit')">Edit</button>
-    <button v-show="edit" @click="emit('editTask')">Save</button>
+    <v-toolbar>
+        <v-checkbox-btn :model-value="done" @click="emit('check-checkbox')"></v-checkbox-btn>
+        <v-list-item-title>{{text}}</v-list-item-title>
+        <v-btn class="ma-2" @click="emit('delete-task')"> Delete </v-btn>
+        <v-btn v-show="!edit" class="ma-2" @click="emit('able-edit')">Edit</v-btn>
+        <v-btn v-show="edit" class="ma-2" @click="emit('edit-task')">Save</v-btn>
+    </v-toolbar>
 </template>

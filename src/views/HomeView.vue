@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <main>
-    <TodoList></TodoList>
-  </main>
+  <v-container style="margin-left: 250px;">
+    <main>
+      <TodoList></TodoList>
+    </main> 
+  </v-container>
 </template>
