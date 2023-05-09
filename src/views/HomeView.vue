@@ -1,11 +1,11 @@
-<script lang="ts" setup>
-  import TodoList from '../components/TodoList.vue'
-</script>
-
 <template>
   <v-container>
-    <main>
-      <TodoList></TodoList>
-    </main> 
+    <div class="about">
+      <h1>{{$t('h1Dashboard')}}</h1>
+      
+      <br>
+
+      <a>{{$t('aDashboard')}}</a>
+    </div>
   </v-container>
 </template>

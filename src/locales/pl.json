@@ -1,5 +1,15 @@
 {
     "homePage": "Strona główna",
+    "LoginEmail": "Twój Email",
+    "LoginPassword": "Hasło",
+    "LoginPasswordHint": "Podaj silne hasło",
+    "SignUp" : "Zaloguj się",
+    "SignUpWith" : "Zaloguj się przez google",
+    "NoAccount": "Brak konta",
+    "CreateAccount" : "Załóż konto",
+    "Register" : "Zarejestruj się",
+    "RegisterWith": "Zarejestruj się przez google",
+    "SignOut" : "Wyloguj się",
     "about": "O stronie",
     "changeLanguageBtn": "Zmień język na angielski",
     "addBtn": "Dodaj",
@@ -14,5 +24,7 @@
     "showTodoCheckbox": "Pokaż tylko do wykonania",
     "aboutPageHeader" : "Strona o nas",
     "languageLabel" : "Język",
-    "rulesException" : "Tekst musi być dłuższy niż 3 znaki"
+    "rulesException" : "Tekst musi być dłuższy niż 3 znaki",
+    "h1Dashboard" : "Co to za strona?",
+    "aDashboard": "Jest to strona z listą zadań do zrobienia. Możesz sobie na niej zrobić swoją listę zadań, które możesz edytować oraz odhaczać i usuwać."
 }

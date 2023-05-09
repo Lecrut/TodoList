@@ -1,7 +1,26 @@
 <script lang="ts" setup>
   import { RouterLink, RouterView } from 'vue-router'
-  import { ref } from "vue"
+  import { onMounted ,ref } from "vue"
+  import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
+  import router from '@/router'
   const drawer = ref(false)
+  const isLoggedIn = ref(false)
+
+  onMounted(() => {
+    onAuthStateChanged(getAuth(), (user) => {
+      if (user) {
+        isLoggedIn.value = true
+      } else {
+        isLoggedIn.value = false
+      }
+    })
+  })
+
+  const handleSingOut = () => {
+    signOut(getAuth()).then(() => {
+      router.push('/')
+    })
+  }
 </script>
 
 <template>
@@ -39,6 +58,36 @@
         </RouterLink>
       </v-list>
 
+      <v-list v-if="isLoggedIn">
+        <RouterLink to="/dashboard">
+          <v-btn block color="info">
+            dashboard
+          </v-btn>
+        </RouterLink>
+      </v-list>
+
+      <v-list v-if="!isLoggedIn">
+        <RouterLink to="/singin">
+          <v-btn block color="info">
+            {{$t('SignUp')}}
+          </v-btn>
+        </RouterLink>
+      </v-list>
+
+      <v-list v-if="!isLoggedIn">
+        <RouterLink to="/register">
+          <v-btn block color="info">
+            {{$t('Register')}}
+          </v-btn>
+        </RouterLink>
+      </v-list>
+
+      <v-list v-if="isLoggedIn">
+        <v-btn block class="mt-2" color="info" @click="handleSingOut">{{
+          $t('SignOut')
+        }}</v-btn>
+      </v-list>
+      
       <v-select 
           v-model="$i18n.locale"
           :label="$t('languageLabel')"
