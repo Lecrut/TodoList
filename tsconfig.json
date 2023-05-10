@@ -25,7 +25,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "lib": ["esnext", "dom", "dom.iterable", "scripthost", "WebWorker"],
-    "types": ["vue", "vite/client"],
+    //"types": ["vue", "vite/client"],
     "typeRoots": ["./node_modules/@types/", "./types"],
     "noImplicitAny": false,
     "paths": {

@@ -1,19 +1,20 @@
-<script setup>
-    defineProps({
-        text: { 
-            type: String,
-            default: ""
-        },
+<script lang="ts" setup>
+    export interface Props {
+        text?: string
+        done?: boolean
+        edit?: boolean
+    }
 
-        done: {
-            type: Boolean
-        },
-
-        edit:{
-            type: Boolean
-        } 
+    withDefaults(defineProps<Props>(), {
+        text: ''
     })
-    const emit = defineEmits(['delete-task', 'able-edit', 'edit-task', 'check-checkbox'])
+
+    const emit = defineEmits<{
+        (e: "check-checkbox"): void
+        (e: "delete-task"): void
+        (e: "able-edit"): void
+        (e: "edit-task"): void
+    }>()
 </script>
 
 <template>

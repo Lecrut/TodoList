@@ -66,7 +66,6 @@
       <v-list>
         <v-list-item v-for="todo in filteredTodos" :key="todo.id">
           <TodoItem
-              :id = "todo.id"
               :text = "todo.text"
               :done = "todo.done"
               :edit= "todo.edit"

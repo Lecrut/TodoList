@@ -61,7 +61,7 @@
       <v-list v-if="isLoggedIn">
         <RouterLink to="/dashboard">
           <v-btn block color="info">
-            dashboard
+            {{ $t('dashboard') }}
           </v-btn>
         </RouterLink>
       </v-list>

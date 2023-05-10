@@ -41,7 +41,10 @@ const vuetify = createVuetify({
   }
 })
 
-const i18n = createI18n({
+type messageSchema = typeof pl
+type messageSchema2 = typeof en
+
+const i18n = createI18n < [messageSchema],'pl', [messageSchema2],'en'>({
   locale: 'pl',
   messages: {
     pl,
