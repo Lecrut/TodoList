@@ -14,6 +14,7 @@ import en from '@/locales/en.json'
 import { initializeApp } from "firebase/app"
 import { getAnalytics } from "firebase/analytics"
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: "AIzaSyBi11RI0D7vpbJW4BCypNuzeTOEfdJLYsA",
@@ -27,7 +28,7 @@ const firebaseConfig = {
 const map = initializeApp(firebaseConfig);
 const analytics = getAnalytics(map);
 const auth = getAuth()
-
+export const db = getFirestore()
 const app = createApp(App)
 const vuetify = createVuetify({
   components,
@@ -41,11 +42,12 @@ const vuetify = createVuetify({
   }
 })
 
-type messageSchema = typeof pl
-type messageSchema2 = typeof en
 
-const i18n = createI18n < [messageSchema],'pl', [messageSchema2],'en'>({
+const i18n = createI18n({
+  mode: 'composition',
+  legacy: false,
   locale: 'pl',
+  fallbackLocale: 'en',
   messages: {
     pl,
     en
