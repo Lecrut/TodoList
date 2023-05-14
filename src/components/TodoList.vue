@@ -1,10 +1,10 @@
 <script setup>
   import TodoItem from './TodoItem.vue'
-  import {useCounterStore} from '../stores/counter'
+  import {useTasksStore} from '../stores/tasks'
   import { storeToRefs } from 'pinia';
   import { computed } from 'vue'
 
-  const store = useCounterStore()
+  const store = useTasksStore()
   
   const {showTodo, sortList, makeMade, changeTodo, removeTodo, editTodo, addTodo} = store
 

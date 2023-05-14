@@ -4,7 +4,7 @@ import { getAuth } from 'firebase/auth'
 import { db } from '@/main'
 import { collection, getDocs, where, query, doc, setDoc } from 'firebase/firestore'
 
-export const useCounterStore = defineStore('counter', () => {
+export const useTasksStore = defineStore('counter', () => {
   let id = 0;
   const userID = getAuth().currentUser?.uid
   const newName = ref("")

@@ -2,7 +2,7 @@
   import { RouterLink, RouterView } from 'vue-router'
   import { onMounted ,ref } from "vue"
   import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
-  import { useCounterStore } from './stores/counter'
+  import { useTasksStore } from './stores/tasks'
   import router from '@/router'
   const drawer = ref(false)
   const isLoggedIn = ref(false)
@@ -19,7 +19,7 @@
 
   const handleSingOut = () => {
     signOut(getAuth()).then(() => {
-      const store = useCounterStore()
+      const store = useTasksStore()
       store.$dispose()
       router.push('/')
     })
