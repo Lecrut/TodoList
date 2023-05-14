@@ -94,7 +94,7 @@
       <v-select 
           v-model="$i18n.locale"
           :label="$t('languageLabel')"
-          :items="['pl', 'en']"
+          :items="['Polski', 'English']"
           :value="$i18n.locale"
           variant="solo">
       </v-select>

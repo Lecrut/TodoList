@@ -1,9 +1,8 @@
+image: rambabusaravanan/firebase:latest
 stages:
 - build
-
-build site:
+build site main:
   stage: build
-  image: rambabusaravanan/firebase:latest
   variables:
     VITE_CI_COMMIT_REF_NAME: $CI_COMMIT_REF_NAME
   before_script:
@@ -25,4 +24,3 @@ build site:
   artifacts:
     paths:
     - dist/
-
