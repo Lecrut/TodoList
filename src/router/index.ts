@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import { getAuth } from 'firebase/auth'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,14 +31,33 @@ const router = createRouter({
     {
       path: '/singin',
       name: 'singin',
+      component: () => import('../views/PageNotFoundView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: '404page',
       component: () => import('../views/SignInView.vue')
     }
   ]
 })
 
-router.beforeEach((to, from, next) => {
+
+const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const removeListener = onAuthStateChanged(
+      getAuth(),
+      (user) => {
+        removeListener()
+        resolve(user)
+      },
+      reject
+    )
+  })
+}
+
+router.beforeEach(async (to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (getAuth().currentUser) {
+    if (await getCurrentUser()) {
       next()
     } else {
       alert('You need to sign up!')
@@ -48,6 +67,7 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
 
 export default router
 

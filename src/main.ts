@@ -11,24 +11,6 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import { aliases, fa } from 'vuetify/iconsets/fa'
 import Polski from '@/locales/pl.json'
 import English from '@/locales/en.json'
-import { initializeApp } from "firebase/app"
-import { getAnalytics } from "firebase/analytics"
-import { getAuth } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBi11RI0D7vpbJW4BCypNuzeTOEfdJLYsA",
-  authDomain: "project-lecrut.firebaseapp.com",
-  projectId: "project-lecrut",
-  storageBucket: "project-lecrut.appspot.com",
-  messagingSenderId: "300390925658",
-  appId: "1:300390925658:web:575fb51aa097bc2cf8df63",
-  measurementId: "G-GD2KV2SQEQ"
-};
-const map = initializeApp(firebaseConfig);
-const analytics = getAnalytics(map);
-const auth = getAuth()
-export const db = getFirestore()
 
 const app = createApp(App)
 const vuetify = createVuetify({
@@ -61,5 +43,3 @@ app.use(vuetify)
 app.use(i18n)
 
 app.mount('#app')
-
-export {app, auth, analytics}

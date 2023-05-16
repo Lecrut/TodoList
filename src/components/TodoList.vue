@@ -8,7 +8,7 @@
   
   const {showTodo, sortList, makeMade, changeTodo, removeTodo, editTodo, addTodo} = store
 
-  const {todos, smthEdited, newTodo, newName} = storeToRefs(store)
+  const {todos, newTodo} = storeToRefs(store)
 
   const filteredTodos = computed(() => store.filteredTodos)
 </script>
@@ -46,22 +46,7 @@
     <span>{{$t('todoCntr')}} {{ todos.filter(produkt => produkt.done === false).length }}</span>
       
     <br>
-      
-    <br>
-      
-    <v-text-field 
-        v-if="smthEdited" 
-        v-model="newName" 
-        :rules="store.nameRules"
-        :label="$t('editTaskLabel')"
-        type="text"/>
-    
-        <v-card
-      class="mx-auto"
-      width="100%"
-    >
-    </v-card>
-    
+
     <ul>
       <v-list>
         <v-list-item v-for="todo in filteredTodos" :key="todo.id">
@@ -70,7 +55,7 @@
               :done = "todo.done"
               :edit= "todo.edit"
               @delete-task="removeTodo(todo)"
-              @edit-task="changeTodo(todo, newName)"
+              @edit-task="(args) => changeTodo(todo, args)"
               @able-edit="editTodo(todo)"
               @check-checkbox="makeMade(todo)"
           ></TodoItem>
