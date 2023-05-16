@@ -15,7 +15,7 @@ const filteredTodos = computed(() => store.filteredTodos)
 
 <template>
   <div class="strona">
-    <v-sheet width="500" class="mx-auto">
+    <v-sheet max-width="500" class="mx-auto">
       <h1 style="text-align: center">{{ $t('todoListHeader') }}</h1>
 
       <main>

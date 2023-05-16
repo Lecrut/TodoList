@@ -29,7 +29,7 @@ const handleSingOut = () => {
 <template>
   <v-app>
     <v-layout>
-      <v-app-bar color="info" temporary>
+      <v-app-bar color="info" prominent>
         <v-app-bar-nav-icon variant="tonal" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
         <v-toolbar-title>Menu</v-toolbar-title>

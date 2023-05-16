@@ -38,7 +38,7 @@ function emitChange() {
 
     <v-text-field v-show="edit" v-model="editName"></v-text-field>
 
-    <v-btn class="ma-2" color="red" @click="emit('delete-task')">{{ $t('deleteBtn') }}</v-btn>
+    <v-btn class="ma-2" color="red" @click="emit('delete-task')">X</v-btn>
 
     <v-btn v-show="!edit" class="ma-2" color="info" @click="emit('able-edit')">{{
       $t('editBtn')
