@@ -1,8 +1,9 @@
-image: rambabusaravanan/firebase:latest
 stages:
   - build
-build site main:
+
+build site:
   stage: build
+  image: rambabusaravanan/firebase:latest
   variables:
     VITE_CI_COMMIT_REF_NAME: $CI_COMMIT_REF_NAME
   before_script:
@@ -12,8 +13,8 @@ build site main:
   script:
     - pnpm install
     - pnpm run build
-    - firebase use --token $FIREBASE_TOKEN default
-    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_TOKEN
+    - firebase use default --token $FIREBASE_TOKEN
+    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --token $FIREBASE_TOKEN
   cache:
     key:
       files:
