@@ -19,13 +19,11 @@
   "todoCntr": "Ilość zadań niewykonanych",
   "editTaskLabel": "Edytuj zadanie",
   "sortBtn": "Sortuj",
-  "deleteBtn": "Usuń",
-  "editBtn": "Edytuj",
-  "saveBtn": "Zapisz",
   "showTodoCheckbox": "Pokaż tylko do wykonania",
   "aboutPageHeader": "Strona o nas",
   "languageLabel": "Język",
   "rulesException": "Tekst musi być dłuższy niż 3 znaki",
-  "h1Dashboard": "Co to za strona?",
+  "h1Dashboard": "Strona główna",
+  "aboutPageValue": "Ninejsza strona jest projektem realizowanym w ramach szkolenia. Składa się z stron do logowania, rejestracji, zarządzania taskami. Taski możemy dodawać, usuwać, edytować i zaznaczać jako zrobione.",
   "aDashboard": "Jest to strona z listą zadań do zrobienia. Możesz sobie na niej zrobić swoją listę zadań, które możesz edytować oraz odhaczać i usuwać."
 }

@@ -7,7 +7,6 @@ import {
   signInWithPopup
 } from 'firebase/auth'
 import { useRouter } from 'vue-router'
-import { mdiGoogle } from '@mdi/js'
 
 const email = ref('')
 const password = ref('')
@@ -56,7 +55,7 @@ const registerGoogle = () => {
 
             <v-btn block class="mt-2" color="info" @click="register"> {{ $t('SignUp') }}</v-btn>
 
-            <v-btn block class="mt-2" color="info" :append-icon="mdiGoogle" @click="registerGoogle">
+            <v-btn block class="mt-2" color="info" @click="registerGoogle">
               {{ $t('SignUpWith') }}</v-btn
             >
 
