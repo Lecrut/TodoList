@@ -1,9 +1,11 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <v-container>
+    <div class="about">
+      <h1>{{ $t('h1Dashboard') }}</h1>
+
+      <br />
+
+      <a>{{ $t('aDashboard') }}</a>
+    </div>
+  </v-container>
 </template>
