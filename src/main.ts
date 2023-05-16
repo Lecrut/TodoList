@@ -20,11 +20,10 @@ const vuetify = createVuetify({
     defaultSet: 'fa',
     aliases,
     sets: {
-      fa,
-    },
+      fa
+    }
   }
 })
-
 
 const i18n = createI18n({
   mode: 'composition',

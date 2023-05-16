@@ -38,46 +38,29 @@ const registerGoogle = () => {
 </script>
 
 <template>
-    <div class="strona">
-        <v-sheet width="500" class="mx-auto">
-            <h1 style="text-align: center;">{{ $t('CreateAccount') }}</h1>
-            
-            <main>
-                <v-sheet>
-                    <v-form @submit.prevent >
-                        <v-text-field
-                            v-model="email"
-                            :label="$t('LoginEmail')"
-                            type="email"
-                        ></v-text-field>
-                        
-                        <v-text-field
-                            v-model="password"
-                            :label="$t('LoginPassword')"
-                            type="password"
-                        ></v-text-field>
+  <div class="strona">
+    <v-sheet width="500" class="mx-auto">
+      <h1 style="text-align: center">{{ $t('CreateAccount') }}</h1>
 
-                        <v-btn
-                            color="info"
-                            block
-                            class="mt-2"
-                            @click="register"
-                            >{{ $t('Register') }}</v-btn
-                        >
+      <main>
+        <v-sheet>
+          <v-form @submit.prevent>
+            <v-text-field v-model="email" :label="$t('LoginEmail')" type="email"></v-text-field>
 
-                        <v-btn
-                            color="info"
-                            block
-                            :append-icon="mdiGoogle"
-                            class="mt-2"
-                            @click="registerGoogle"
-                            >{{ $t('RegisterWith') }}
-                        </v-btn>
+            <v-text-field
+              v-model="password"
+              :label="$t('LoginPassword')"
+              type="password"
+            ></v-text-field>
 
+            <v-btn color="info" block class="mt-2" @click="register">{{ $t('Register') }}</v-btn>
 
-                    </v-form>
-                </v-sheet>
-            </main>
+            <v-btn color="info" block :append-icon="mdiGoogle" class="mt-2" @click="registerGoogle"
+              >{{ $t('RegisterWith') }}
+            </v-btn>
+          </v-form>
         </v-sheet>
-    </div>
+      </main>
+    </v-sheet>
+  </div>
 </template>

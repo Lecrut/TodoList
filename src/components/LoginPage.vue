@@ -39,37 +39,33 @@ const registerGoogle = () => {
 
 <template>
   <div class="strona">
-      <v-sheet width="500" class="mx-auto">
-          <h1 style="text-align: center;">{{$t('SignUp')}}</h1>
+    <v-sheet width="500" class="mx-auto">
+      <h1 style="text-align: center">{{ $t('SignUp') }}</h1>
 
-          <main>
-          <v-sheet>
-              <v-form @submit.prevent >
-                  <v-text-field
-                      v-model="email"
-                      :label="$t('LoginEmail')"
-                      type="email"
-                  ></v-text-field>
+      <main>
+        <v-sheet>
+          <v-form @submit.prevent>
+            <v-text-field v-model="email" :label="$t('LoginEmail')" type="email"></v-text-field>
 
-                  <v-text-field
-                      v-model="password"
-                      :label="$t('LoginPassword')"
-                      type="password"
-                      :hint="$t('LoginPasswordHint')"
-                  ></v-text-field>
+            <v-text-field
+              v-model="password"
+              :label="$t('LoginPassword')"
+              type="password"
+              :hint="$t('LoginPasswordHint')"
+            ></v-text-field>
 
-                  <v-btn block class="mt-2" color="info" @click="register">
-                      {{$t('SignUp') }}</v-btn>
+            <v-btn block class="mt-2" color="info" @click="register"> {{ $t('SignUp') }}</v-btn>
 
-                  <v-btn block class="mt-2" color="info" :append-icon="mdiGoogle" @click="registerGoogle">
-                      {{ $t('SignUpWith') }}</v-btn>
+            <v-btn block class="mt-2" color="info" :append-icon="mdiGoogle" @click="registerGoogle">
+              {{ $t('SignUpWith') }}</v-btn
+            >
 
-                  <v-btn block class="mt-2" color="error" @click="() => $router.push('/register')" >
-                      {{ $t('NoAccount') }} </v-btn>
-              </v-form>
-          </v-sheet>
-          </main>
-      </v-sheet>
+            <v-btn block class="mt-2" color="error" @click="() => $router.push('/register')">
+              {{ $t('NoAccount') }}
+            </v-btn>
+          </v-form>
+        </v-sheet>
+      </main>
+    </v-sheet>
   </div>
 </template>
-

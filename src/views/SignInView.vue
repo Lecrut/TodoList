@@ -1,11 +1,11 @@
 <script setup>
-  import LoginTab from '@/components/LoginPage.vue'
+import LoginTab from '@/components/LoginPage.vue'
 </script>
 
 <template>
   <v-container>
     <main>
       <LoginTab></LoginTab>
-    </main> 
+    </main>
   </v-container>
 </template>

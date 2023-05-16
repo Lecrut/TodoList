@@ -1,11 +1,11 @@
 <script setup>
-    import RegistrationTab from '@/components/RegistrationPage.vue'
+import RegistrationTab from '@/components/RegistrationPage.vue'
 </script>
 
 <template>
-   <v-container>
+  <v-container>
     <main>
       <RegistrationTab></RegistrationTab>
-    </main> 
+    </main>
   </v-container>
 </template>
