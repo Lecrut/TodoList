@@ -31,12 +31,12 @@ const router = createRouter({
     {
       path: '/singin',
       name: 'singin',
-      component: () => import('../views/PageNotFoundView.vue')
+      component: () => import('../views/SignInView.vue')
     },
     {
       path: '/:pathMatch(.*)*',
       name: '404page',
-      component: () => import('../views/SignInView.vue')
+      component: () => import('../views/PageNotFoundView.vue')
     }
   ]
 })
